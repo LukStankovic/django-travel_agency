@@ -1,0 +1,16 @@
+{% extends "travel_agency/base.html" %}
+
+{% block title %}Školní zájezdy - seznam exkurzí{% endblock %}
+{% block content %}
+<div style="text-align:left">
+	<h3>Exkurze</h3>
+	<ul>
+		<li>ID: {{excursion.id}} </li>
+		<li>Jméno a příjmení: {{ excursion.customer.name }} {{ excursion.customer.surname }}</li>
+		<li>Destinace: {{ excursion.destination.city}}</li>
+		<li>Datum: {{ excursion.datetime }}</li>
+		<li>Popis: {{ excursion.desc }}</li>
+	</ul>
+	<a href="/excursions/">Zpět na exkurze</a>
+</div>
+{% endblock %}
