@@ -5,11 +5,11 @@
 <div style="text-align:left">
 	<h3>Exkurze</h3>
 	<ul>
-		<li>ID: {{excursion.id}} </li>
-		<li>Jméno a příjmení: {{ excursion.customer.name }} {{ excursion.customer.surname }}</li>
-		<li>Destinace: {{ excursion.destination.city}}</li>
-		<li>Datum: {{ excursion.datetime }}</li>
-		<li>Popis: {{ excursion.desc }}</li>
+		<li><strong>ID:</strong> {{excursion.id}} </li>
+		<li><strong>Jméno a příjmení:</strong> {{ excursion.customer.name }} {{ excursion.customer.surname }}</li>
+		<li><strong>Destinace:</strong> <a href="/destinations/{{ excursion.destination.id}}/">{{ excursion.destination.city}}</a></li>
+		<li><strong>Datum:</strong> {{ excursion.datetime }}</li>
+		<li><strong>Popis:</strong> {{ excursion.desc }}</li>
 	</ul>
 	<a href="/excursions/">Zpět na exkurze</a>
 </div>

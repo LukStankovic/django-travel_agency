@@ -22,3 +22,17 @@ def excursion_detail(request, id):
     excursion = get_object_or_404(Excursion, pk=id)
     context = {'excursion': excursion}
     return HttpResponse(template.render(context, request))
+
+
+def destinations(request):
+    template = loader.get_template('travel_agency/destinations.html')
+    all_destinations = Destination.objects.all()
+    context = {'all_destinations': all_destinations}
+    return HttpResponse(template.render(context, request))
+
+
+def destination_detail(request, id):
+    template = loader.get_template('travel_agency/destination_detail.html')
+    destination = get_object_or_404(Destination, pk=id)
+    context = {'destination': destination}
+    return HttpResponse(template.render(context, request))

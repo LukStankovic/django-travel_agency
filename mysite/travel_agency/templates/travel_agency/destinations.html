@@ -1,0 +1,17 @@
+{% extends "travel_agency/base.html" %}
+
+{% block title %}Školní zájezdy - seznam exkurzí{% endblock %}
+{% block content %}
+<div style="text-align:left">
+{% if all_destinations %}
+	<h3>Seznam destinací</h3>
+	<ul>
+	    {% for destination in all_destinations %}
+		<li><a href="/destinations/{{ destination.id }}/"><strong>{{ destination.city }}</strong></a> ~ typ: {{ destination.type }}</li>
+	    {% endfor %}
+	</ul>
+{% else %}
+	<h3>Nebyly nalezeny žádné exkurze.</h3>
+{% endif %}
+</div>
+{% endblock %}
