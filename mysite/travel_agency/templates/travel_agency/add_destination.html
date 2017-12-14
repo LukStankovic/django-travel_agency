@@ -1,0 +1,20 @@
+{% extends "travel_agency/base.html" %}
+
+{% block title %}Školní zájezdy - přidat destinaci{% endblock %}
+{% block content %}
+<div style="text-align:left">
+
+	<h3>Přidat destinaci</h3>
+	{%if success %}
+		<div class="p-3 mb-2 bg-success text-white">Úspěšně uloženo</div>
+	{%endif%}
+	<ul>
+	    <form action="add_destination/" method="POST">
+            {% csrf_token %}
+            <ul>{{form.as_p}}</ul>
+
+            <input type="submit" name="submit" value="Save" />
+        </form>
+	</ul>
+</div>
+{% endblock %}

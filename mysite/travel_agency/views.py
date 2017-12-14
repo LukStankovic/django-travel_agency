@@ -2,6 +2,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
+from django import forms
+from .forms import Destination, Excursion, Customer
+
+
 
 from .models import Excursion, Destination, Customer
 
@@ -35,4 +39,18 @@ def destination_detail(request, id):
     template = loader.get_template('travel_agency/destination_detail.html')
     destination = get_object_or_404(Destination, pk=id)
     context = {'destination': destination}
+    return HttpResponse(template.render(context, request))
+
+
+def customers(request):
+    template = loader.get_template('travel_agency/customers.html')
+    all_customers = Customer.objects.all()
+    context = {'all_customers': all_customers}
+    return HttpResponse(template.render(context, request))
+
+
+def customer_detail(request, id):
+    template = loader.get_template('travel_agency/customer_detail.html')
+    customer = get_object_or_404(Customer, pk=id)
+    context = {'customer': customer}
     return HttpResponse(template.render(context, request))

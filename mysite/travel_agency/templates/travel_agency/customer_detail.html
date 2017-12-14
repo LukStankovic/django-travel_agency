@@ -1,0 +1,14 @@
+{% extends "travel_agency/base.html" %}
+
+{% block title %}Školní zájezdy - detail zákazníka{% endblock %}
+{% block content %}
+<div style="text-align:left">
+	<h3>{{ customer.name }} {{ customer.surname }}</h3>
+	<ul>
+		<li><strong>Jméno a příjmení:</strong> {{ customer.name }} {{ customer.surname }}</li>
+		<li><strong>Datum narození:</strong> {{ customer.birthdate }}</li>
+
+	</ul>
+	<a href="/customers/">Zpět na zákazníky</a>
+</div>
+{% endblock %}
