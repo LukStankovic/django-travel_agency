@@ -3,9 +3,7 @@ from django.shortcuts import render, render_to_response, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 from django import forms
-from .forms import Destination, Excursion, Customer
-
-
+from .forms import DestinationForm
 
 from .models import Excursion, Destination, Customer
 
@@ -54,3 +52,20 @@ def customer_detail(request, id):
     customer = get_object_or_404(Customer, pk=id)
     context = {'customer': customer}
     return HttpResponse(template.render(context, request))
+
+# Destination form
+
+def add_destination(request):
+    success = False
+    template = loader.get_template('travel_agency/add_destination.html')
+    if request.method == 'POST':
+        form = DestinationForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            success = True
+            context = {'form' : form,'success' : success}
+            return HttpResponse(template.render(context, request))
+    else:
+        form = DestinationForm()
+        context = {'form': form, 'success': success}
+        return HttpResponse(template.render(context, request))

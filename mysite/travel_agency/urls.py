@@ -9,6 +9,6 @@ urlpatterns = [
     path('destinations/', views.destinations, name='destinations'),
     path('destinations/<int:id>/', views.destination_detail, name='destination_detail'),
     path('customers/', views.customers, name='customers'),
-    path('customers/<int:id>/', views.customer_detail, name='customer_detail')
-    #path('add_destination/', views.add_destination, name='add_destination')
+    path('customers/<int:id>/', views.customer_detail, name='customer_detail'),
+    path('add_destination/', views.add_destination, name='add_destination')
 ]

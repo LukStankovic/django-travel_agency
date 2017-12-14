@@ -9,7 +9,7 @@
 		<div class="p-3 mb-2 bg-success text-white">Úspěšně uloženo</div>
 	{%endif%}
 	<ul>
-	    <form action="add_destination/" method="POST">
+	    <form action="/add_destination/" method="POST">
             {% csrf_token %}
             <ul>{{form.as_p}}</ul>
 
