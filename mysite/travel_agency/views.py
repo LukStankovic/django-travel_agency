@@ -3,7 +3,7 @@ from django.shortcuts import render, render_to_response, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 from django import forms
-from .forms import DestinationForm, ExcursionForm
+from .forms import DestinationForm, ExcursionForm, CustomerForm
 
 from .models import Excursion, Destination, Customer
 
@@ -84,5 +84,22 @@ def add_excursion(request):
             return HttpResponse(template.render(context, request))
     else:
         form = ExcursionForm()
+        context = {'form': form, 'success': success}
+        return HttpResponse(template.render(context, request))
+
+
+# Registration form
+def registration(request):
+    success = False
+    template = loader.get_template('travel_agency/registration.html')
+    if request.method == 'POST':
+        form = CustomerForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            success = True
+            context = {'form': form, 'success': success}
+            return HttpResponse(template.render(context, request))
+    else:
+        form = CustomerForm()
         context = {'form': form, 'success': success}
         return HttpResponse(template.render(context, request))
